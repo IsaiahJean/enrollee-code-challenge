@@ -1,0 +1,52 @@
+<h1>The Challenge</h1>
+
+<div *ngIf="loadingComplete">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- active Column -->
+    <ng-container matColumnDef="active">
+        <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+        <div *ngIf="element.active">
+            <img src="..\assets\img\status.png">Active
+        </div>
+        <div *ngIf="!element.active">
+            <img src="..\assets\img\status_busy.png">Inactive
+        </div>
+        </mat-cell>
+    </ng-container>
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- date of birth Column -->
+    <ng-container matColumnDef="dateOfBirth">
+        <mat-header-cell *matHeaderCellDef> Date Of Birth </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </mat-cell>
+    </ng-container>
+
+    <!-- edit Column -->
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+        <button mat-button (click)="openEditDialog(element)">Edit</button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+

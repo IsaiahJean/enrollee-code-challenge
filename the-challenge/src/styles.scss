@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.standard-button {
+  background: rgb(34, 33, 33);
+  margin-top: 10px;
+  width: auto;
+  text-align: center;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 0.8em;
+  padding: 5px 25px 5px 25px;
+}
+
+.outline-button {
+  @extend %standard-button !optional;
+  border: 1px solid black !important;
+  background-color: transparent !important;
+  margin-top: 10px;
+  width: auto;
+  text-align: center;
+  height: 40px;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  font-size: 0.8em;
+  padding: 5px 25px 5px 25px;
+}

@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+mat-header-cell {
+    text-align: center !important;
+}
+
+// id Width
+.mat-header-cell:first-child {
+    max-width: 40% !important;
+}
+  
+.mat-cell:first-child {
+    max-width: 40% !important;
+}
+  
+// active Width
+.mat-header-cell:nth-child(2) {
+    max-width: 25% !important;
+}
+
+.mat-cell:nth-child(2) {
+    max-width: 25% !important;
+}
+
+// name Width
+.mat-header-cell:nth-child(3) {
+    max-width: 20% !important;
+}
+
+.mat-cell:nth-child(3) {
+    max-width: 20% !important;
+}
+
+// date of birth Width
+.mat-header-cell:nth-child(4) {
+    max-width: 10% !important;
+}
+    
+.mat-cell:nth-child(4) {
+    max-width: 10% !important;
+}
+
+// edit Width
+.mat-header-cell:nth-child(5) {
+    max-width: 5% !important;
+}
+    
+.mat-cell:nth-child(5) {
+    max-width: 5% !important;
+}
