@@ -1,1 +1,9 @@
-<p>error-dialog works!</p>
+<mat-dialog-content>
+    <div class="error-container" fxLayout="row" fxLayoutAlign="center">
+      <div fxFlex="100" class="message-container">
+        <div class="dialog-title">{{errorTitle}}</div>
+        <div class="dialog-message">{{errorMessage}}</div>
+      </div>
+    </div>
+      <button mat-raised-button class="standard-button" (click)="onClose()">OK</button>
+</mat-dialog-content>

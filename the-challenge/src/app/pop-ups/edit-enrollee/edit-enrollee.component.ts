@@ -37,7 +37,6 @@ export class EditEnrolleeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.data);
   }
 
   editEnrollee() {
@@ -47,18 +46,15 @@ export class EditEnrolleeComponent implements OnInit {
       (response) => {
         this.updateSuccesful = response;
         this.spinnerService.display(false);
-        console.log('edit enrollee PUT request succesful', response);
       },
       (error) => {
         this.errorService.handleError(error);
         this.spinnerService.display(false);
-        console.log('edit enrollee PUT error', error);
       },
       () => {
           this.dialogRef.close({ event: true });
           this.spinnerService.display(false);
           this.openSnackBar(this.message, null);
-          console.log('edit enrollee PUT complete', this.updateSuccesful);
         }
     );
   }

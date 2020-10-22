@@ -12,7 +12,7 @@ import { SpinnerService } from '../shared/service/spinner.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterContentChecked, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
      /**
    * Declare Variable Here
@@ -33,17 +33,10 @@ export class HomeComponent implements OnInit, AfterContentChecked, AfterViewInit
   ) { }
 
   ngOnInit(): void {
-  }
-
-  ngAfterContentChecked(): void {
-    this.spinnerService.status.subscribe((val: boolean) => {
-      // setTimeout(() => 10000);
-      this.showLoader = val;
-    });
+    this.getEnrollees();
   }
 
   ngAfterViewInit(): void {
-    this.getEnrollees();
   }
 
   getEnrollees() {
@@ -53,6 +46,7 @@ export class HomeComponent implements OnInit, AfterContentChecked, AfterViewInit
         this.enrollees = response;
         this.dataSource = new MatTableDataSource<IEnrollees[]>(this.enrollees);
         this.loadingComplete = true;
+        this.spinnerService.display(false);
       },
       (error) => {
         this.errorService.handleError(error);
