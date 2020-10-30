@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ErrorHandlerService } from 'src/app/shared/service/error-handler.service';
@@ -18,7 +18,7 @@ export class EditEnrolleeComponent implements OnInit {
   enrolleeDetails = this.data.lineItems;
   editEnrolleeForm = this.fb.group({
     id: [this.enrolleeDetails.id],
-    name: [this.enrolleeDetails.name],
+    name: [this.enrolleeDetails.name, [Validators.required, Validators.pattern(/^[^0-9 ]+ ?[^0-9 ]+$/i)]],
     active: [this.enrolleeDetails.active],
     dateOfBirth: [this.enrolleeDetails.dateOfBirth]
   });
@@ -54,7 +54,7 @@ export class EditEnrolleeComponent implements OnInit {
       () => {
           this.dialogRef.close({ event: true });
           this.spinnerService.display(false);
-          this.openSnackBar(this.message, null);
+          this.openSnackBar(this.message, 'ok');
         }
     );
   }
@@ -67,6 +67,19 @@ export class EditEnrolleeComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 5000,
     });
+  }
+
+  getValidationErrorMessages(controlName: string, fieldLabel: string) {
+    let result: string[] = [];
+    let control = this.editEnrolleeForm.get(controlName);
+    if (control.hasError("required")) {
+      result.push(fieldLabel + " is required.");
+    }
+    if (control.hasError("pattern")) {
+      if (controlName === "name")
+      result.push(fieldLabel + " must not contain numbers and spaces.");
+    }
+    return result;
   }
 
 }

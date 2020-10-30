@@ -5,7 +5,7 @@ import { SpinnerService } from './shared/service/spinner.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements AfterContentChecked, AfterViewChecked {
 
@@ -20,7 +20,7 @@ export class AppComponent implements AfterContentChecked, AfterViewChecked {
   ) { }
 
   ngAfterViewChecked(): void {
-    // this.cdr.detectChanges();
+    this.cdr.detectChanges();
   }
 
   ngAfterContentChecked(): void {

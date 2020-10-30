@@ -1,6 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+$color-disabled: #a5a9b4;
+$color-disabled-font: #5b6376;
+
 .standard-button {
   background: rgb(34, 33, 33);
   margin-top: 10px;
@@ -13,7 +26,20 @@
   border: none;
   outline: none;
   font-size: 0.8em;
-  padding: 5px 25px 5px 25px;
+}
+
+.disabled-button {
+  margin-top: 10px;
+  width: auto;
+  text-align: center;
+  height: 40px;
+  color: $color-disabled-font !important;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 0.8em;
+  background-color: $color-disabled !important;
+  cursor: default !important;
 }
 
 .outline-button {
@@ -29,7 +55,6 @@
   cursor: pointer;
   outline: none;
   font-size: 0.8em;
-  padding: 5px 25px 5px 25px;
 }
 
 /* Absolute Center Spinner */
@@ -60,3 +85,4 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
 }
+

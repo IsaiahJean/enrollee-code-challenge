@@ -5,11 +5,17 @@ mat-form-field {
     margin-bottom: 10px;
 }
 
+.edit-enrollee-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
 .dialog-footer {
     margin-top: 40px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
 }
 
 .confirm {

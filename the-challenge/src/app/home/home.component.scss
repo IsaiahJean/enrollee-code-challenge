@@ -1,13 +1,30 @@
-table {
-    width: 100%;
-}
-
 h1 {
     text-align: center;
 }
 
+mat-table {
+    width: 100%;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    width:98%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.filter {
+    align-self: flex-end;
+    margin-right: 30px;
+}
+
 mat-header-cell {
     text-align: center !important;
+}
+
+td.mat-cell {
+    width: 100% !important;
 }
 
 // id Width
@@ -54,3 +71,9 @@ mat-header-cell {
 .mat-cell:nth-child(5) {
     max-width: 5% !important;
 }
+
+// No Record Row
+.no-record-row {
+    padding-top: 15px;
+    padding-left: 15px;
+  }

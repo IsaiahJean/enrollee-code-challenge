@@ -1,41 +1,44 @@
-<form [formGroup]="editEnrolleeForm">
-    <div> 
-        <mat-form-field appearance="none">
-            <mat-label>ID</mat-label><br>
-            <input formControlName="id" matInput readonly>
-        </mat-form-field>
-    </div>
-    <div> 
-        <mat-form-field appearance="none">
-            <mat-label>Date Of Birth</mat-label><br>
-            <input formControlName="dateOfBirth" matInput readonly>
-        </mat-form-field>
-    </div>
-    <div> 
-        <mat-form-field>
-            <mat-label>Name</mat-label><br>
-            <input formControlName="name" matInput placeholder="Edit name" floatLabel="never" required>
-            <mat-error>
-                Please enter <strong>name</strong>
-            </mat-error>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-slide-toggle formControlName="active" color="primary">Active Status</mat-slide-toggle>
-    </div>
-</form>
+<div class="edit-enrollee-container">
+    <form [formGroup]="editEnrolleeForm">
+        <div> 
+            <mat-form-field appearance="none">
+                <mat-label>ID</mat-label><br>
+                <input formControlName="id" matInput readonly>
+            </mat-form-field>
+        </div>
+        <div> 
+            <mat-form-field appearance="none">
+                <mat-label>Date Of Birth</mat-label><br>
+                <input formControlName="dateOfBirth" matInput readonly>
+            </mat-form-field>
+        </div>
+        <div> 
+            <mat-form-field>
+                <mat-label>Name</mat-label><br>
+                <input formControlName="name" matInput placeholder="Edit name" autofocus>
+                <mat-error *ngFor="let e of getValidationErrorMessages('name', 'Name')">{{e}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-slide-toggle formControlName="active" color="primary">Active Status</mat-slide-toggle>
+        </div>
+    </form>
 
-<div class="dialog-footer">
-    <div class="confirm">
-        <button class="standard-button" mat-button
-        (click)="editEnrollee()">
-            Confirm Edits
-        </button>
+    <div class="dialog-footer">
+        <div class="confirm">
+            <button class="standard-button" 
+            [ngClass]="{'disabled-button': editEnrolleeForm.invalid,
+            'default-button': !editEnrolleeForm.invalid}" 
+            [disabled]="editEnrolleeForm.invalid"  mat-button
+            (click)="editEnrollee()">
+                Confirm Edits
+            </button>
+        </div>
+        <div class="cancel">
+            <button class="outline-button" mat-button 
+            (click)="cancelEditEnrollee()" [mat-dialog-close]="true">
+                Cancel
+            </button>
+        </div>  
     </div>
-    <div class="cancel">
-        <button class="outline-button" mat-button 
-        (click)="cancelEditEnrollee()" [mat-dialog-close]="true">
-            Cancel
-        </button>
-    </div>  
 </div>
