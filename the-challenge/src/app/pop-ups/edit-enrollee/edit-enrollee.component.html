@@ -15,7 +15,7 @@
         <div> 
             <mat-form-field>
                 <mat-label>Name</mat-label><br>
-                <input formControlName="name" matInput placeholder="Edit name" autofocus>
+                <input formControlName="name" matInput placeholder="Edit name" #inputElement>
                 <mat-error *ngFor="let e of getValidationErrorMessages('name', 'Name')">{{e}}</mat-error>
             </mat-form-field>
         </div>

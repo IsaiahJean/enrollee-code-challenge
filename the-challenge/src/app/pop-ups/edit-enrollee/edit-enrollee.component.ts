@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { SpinnerService } from 'src/app/shared/service/spinner.service';
   templateUrl: './edit-enrollee.component.html',
   styleUrls: ['./edit-enrollee.component.scss']
 })
-export class EditEnrolleeComponent implements OnInit {
+export class EditEnrolleeComponent implements OnInit, AfterViewInit {
   /**
    * declare variables here
    */
@@ -25,6 +25,8 @@ export class EditEnrolleeComponent implements OnInit {
   updateSuccesful: any;
   message = 'Enrollee Details Have Been Updated.';
 
+  @ViewChild('inputElement') inputField: ElementRef;
+
   constructor(
     public dialogRef: MatDialogRef<EditEnrolleeComponent>,
     private fb: FormBuilder,
@@ -37,6 +39,10 @@ export class EditEnrolleeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.inputField.nativeElement.focus();
   }
 
   editEnrollee() {
